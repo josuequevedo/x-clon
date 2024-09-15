@@ -19,144 +19,87 @@ import classNames from "classnames";
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { navigate } = useNavigation();
   const { isDarkMode, handleDarkMode } = useDarkMode();
+
+  const menuItems = [
+    {
+      icon: <XIcon sx={{ fontSize: 30 }} />,
+      text: "",
+      route: "home",
+    },
+    {
+      icon: <HomeOutlinedIcon sx={{ fontSize: 30 }} />,
+      text: "Inicio",
+      route: "home",
+    },
+    {
+      icon: <SearchOutlinedIcon sx={{ fontSize: 30 }} />,
+      text: "Explorar",
+      route: "explore",
+    },
+    {
+      icon: <NotificationsOutlinedIcon sx={{ fontSize: 30 }} />,
+      text: "Notificaciones",
+      route: "notify",
+    },
+    {
+      icon: <MarkunreadOutlinedIcon sx={{ fontSize: 30 }} />,
+      text: "Mensajes",
+      route: "messages",
+    },
+    {
+      icon: <BrowserNotSupportedOutlinedIcon sx={{ fontSize: 30 }} />,
+      text: "Grok",
+      route: "grok",
+    },
+    {
+      icon: <ListAltOutlinedIcon sx={{ fontSize: 30 }} />,
+      text: "Listas",
+      route: "lists",
+    },
+    {
+      icon: <BookmarkBorderOutlinedIcon sx={{ fontSize: 30 }} />,
+      text: "Guardados",
+      route: "saves",
+    },
+    {
+      icon: <XIcon sx={{ fontSize: 30 }} />,
+      text: "Premium",
+      route: "premium",
+    },
+    {
+      icon: <GroupOutlinedIcon sx={{ fontSize: 30 }} />,
+      text: "Comunidades",
+      route: "comunity",
+    },
+    {
+      icon: <PersonOutlinedIcon sx={{ fontSize: 30 }} />,
+      text: "Perfil",
+      route: "profile",
+    },
+  ];
+
   return (
     <div className={`container-layout ${isDarkMode ? "darkMode" : ""}`}>
       <aside className='sidebar'>
         <nav className='sidebar-nav'>
           <ul className='menu'>
-            <li className='menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("home")}
-              >
-                <XIcon sx={{ fontSize: 30 }} />
-              </div>
-            </li>
-            <li className='menu-item selected-menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("home")}
-              >
-                <HomeOutlinedIcon sx={{ fontSize: 30 }} />
-
-                <p>Inicio</p>
-              </div>
-            </li>
-            <li className='menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("explore")}
-              >
-                <SearchOutlinedIcon sx={{ fontSize: 30 }} />
-
-                <p>Explorar</p>
-              </div>
-            </li>
-            <li className='menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("notify")}
-              >
-                <NotificationsOutlinedIcon sx={{ fontSize: 30 }} />
-
-                <p>Notificaciones</p>
-              </div>
-            </li>
-            <li className='menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("messages")}
-              >
-                <MarkunreadOutlinedIcon sx={{ fontSize: 30 }} />
-                <p>Mensajes</p>
-              </div>
-            </li>
-            <li className='menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("grok")}
-              >
-                <BrowserNotSupportedOutlinedIcon sx={{ fontSize: 30 }} />
-                <p>Grok</p>
-              </div>
-            </li>
-            <li className='menu-item' onClick={() => navigate("lists")}>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-              >
-                <ListAltOutlinedIcon sx={{ fontSize: 30 }} />
-                <p>Listas</p>
-              </div>
-            </li>
-            <li className='menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("saves")}
-              >
-                <BookmarkBorderOutlinedIcon sx={{ fontSize: 30 }} />
-                <p>Guardados</p>
-              </div>
-            </li>
-            <li className='menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("comunity")}
-              >
-                <GroupOutlinedIcon sx={{ fontSize: 30 }} />
-                <p>Comunidades</p>
-              </div>
-            </li>
-            <li className='menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("premium")}
-              >
-                <XIcon sx={{ fontSize: 30 }} />
-                <p>Premium</p>
-              </div>
-            </li>
-            <li className='menu-item'>
-              <div
-                className={classNames("item", {
-                  "item-dark": isDarkMode,
-                  "item-light": !isDarkMode,
-                })}
-                onClick={() => navigate("profile")}
-              >
-                <PersonOutlinedIcon sx={{ fontSize: 30 }} />
-                <p>Perfil</p>
-              </div>
-            </li>
+            {menuItems &&
+              menuItems.map((item, index) => {
+                return (
+                  <li key={index} className='menu-item'>
+                    <div
+                      className={classNames("item", {
+                        "item-dark": isDarkMode,
+                        "item-light": !isDarkMode,
+                      })}
+                      onClick={() => navigate(item.route)}
+                    >
+                      {item.icon}
+                      <p>{item.text}</p>
+                    </div>
+                  </li>
+                );
+              })}
             <li className='menu-item'>
               <div
                 className={classNames("item", {

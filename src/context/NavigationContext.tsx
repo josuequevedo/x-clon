@@ -31,6 +31,16 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
     };
   }, []);
 
+  const url = window.location.pathname.substring(1);
+  useEffect(() => {
+    const pathName = url[0]?.toUpperCase() + url?.slice(1);
+    document.title = `${pathName} / X`;
+
+    return (): void => {
+      document.title = `Home / X`;
+    };
+  }, [url]);
+
   const navigate = (view: string): void => {
     setCurrentView(view);
     window.history.pushState({}, "", view);
