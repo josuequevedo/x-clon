@@ -1,15 +1,11 @@
 import { Layout } from "./layout/Layout";
+import { Routes } from "./routes/routes";
 
 function App(): JSX.Element {
   return (
     <>
       <Layout>
-        <div>
-          <h1>hASD</h1>
-        </div>
-        <div>
-          <h1>hASD</h1>
-        </div>
+        <Routes />
       </Layout>
     </>
   );

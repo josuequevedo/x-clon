@@ -6,3 +6,11 @@
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+body:has(.darkMode) {
+  color: #fff;
+  background-color: #000;
+}
+body:has(.darkMode) p {
+  color: #fff;
+}
