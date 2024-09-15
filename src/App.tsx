@@ -4,7 +4,12 @@ function App(): JSX.Element {
   return (
     <>
       <Layout>
-        <h1>asd</h1>
+        <div>
+          <h1>hASD</h1>
+        </div>
+        <div>
+          <h1>hASD</h1>
+        </div>
       </Layout>
     </>
   );
